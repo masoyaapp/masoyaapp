@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Masoya Child Safety Standards — Our commitment to protecting minors and preventing child exploitation." />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://masoya.app/child-safety/" />
+    <link rel="icon" href="/assets/logo.svg" type="image/svg+xml" />
+    <title>Child Safety Standards · Masoya</title>
+
+    <style>
+        :root {
+            --bg: #f8fafb;
+            --card-bg: #ffffff;
+            --text: #1e293b;
+            --text-secondary: #5b6e85;
+            --accent: #dc2645;
+            --accent-soft: #fef1f3;
+            --accent-border: #f7ccd4;
+            --border: #e8ecf1;
+            --shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.04);
+            --shadow-md: 0 6px 24px rgba(16, 24, 40, 0.07);
+            --shadow-lg: 0 18px 48px rgba(16, 24, 40, 0.10);
+            --radius-sm: 10px;
+            --radius: 18px;
+            --radius-lg: 24px;
+            --max-width: 860px;
+            --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            --transition: 180ms ease-out;
+            --progress: 0%;
+        }
+
+        [data-theme="dark"] {
+            --bg: #0f1419;
+            --card-bg: #1a1f27;
+            --text: #e6ecf3;
+            --text-secondary: #94a3b8;
+            --accent: #f34b68;
+            --accent-soft: #251318;
+            --accent-border: #3d1f28;
+            --border: #29303b;
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.18);
+            --shadow-md: 0 6px 24px rgba(0, 0, 0, 0.28);
+            --shadow-lg: 0 18px 48px rgba(0, 0, 0, 0.35);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root:not([data-theme="light"]) {
+                --bg: #0f1419;
+                --card-bg: #1a1f27;
+                --text: #e6ecf3;
+                --text-secondary: #94a3b8;
+                --accent: #f34b68;
+                --accent-soft: #251318;
+                --accent-border: #3d1f28;
+                --border: #29303b;
+                --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.18);
+                --shadow-md: 0 6px 24px rgba(0, 0, 0, 0.28);
+                --shadow-lg: 0 18px 48px rgba(0, 0, 0, 0.35);
+            }
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
+        }
+
+        body {
+            margin: 0;
+            font-family: var(--font-sans);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            transition: background var(--transition), color var(--transition);
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            width: var(--progress);
+            background: linear-gradient(90deg, var(--accent), #f7728a);
+            z-index: 1000;
+            border-radius: 0 2px 2px 0;
+            transition: width 60ms linear;
+            pointer-events: none;
+        }
+
+        .wrap {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 20px 18px 72px;
+        }
+
+        .hero {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 36px 32px 32px;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 28px;
+            position: relative;
+            overflow: hidden;
+            transition: box-shadow var(--transition), border-color var(--transition);
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -40px;
+            right: -40px;
+            width: 160px;
+            height: 160px;
+            background: radial-gradient(circle, var(--accent-soft) 0%, transparent 72%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .hero > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .brand-row {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            margin-bottom: 14px;
+        }
+
+        .logo {
+            width: 46px;
+            height: 46px;
+            border-radius: 14px;
+            object-fit: cover;
+            display: block;
+            background: #ffffff;
+            border: 1.5px solid var(--accent-border);
+            box-shadow: 0 8px 22px rgba(220, 38, 69, 0.13);
+            transition: transform var(--transition);
+        }
+
+        .logo:hover {
+            transform: scale(1.04);
+        }
+
+        .brand-name {
+            font-weight: 700;
+            font-size: 18px;
+            color: var(--accent);
+            letter-spacing: -0.3px;
+            text-decoration: none;
+        }
+
+        .brand-name:hover {
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .hero h1 {
+            margin: 0 0 10px;
+            font-size: 38px;
+            font-weight: 800;
+            letter-spacing: -0.8px;
+            line-height: 1.18;
+            color: var(--text);
+        }
+
+        .hero .subtitle {
+            color: var(--text-secondary);
+            font-size: 16px;
+            max-width: 640px;
+            margin: 0;
+        }
+
+        .toc {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 18px 20px;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 28px;
+            position: sticky;
+            top: 16px;
+            z-index: 20;
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            background: color-mix(in srgb, var(--card-bg) 92%, transparent);
+            transition: box-shadow var(--transition), border-color var(--transition);
+        }
+
+        .toc.scrolled {
+            box-shadow: var(--shadow-md);
+        }
+
+        .toc-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 11px;
+        }
+
+        .toc-header strong {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .toc-header .icon {
+            font-size: 15px;
+        }
+
+        .toc-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+        }
+
+        .toc-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            border: 1px solid var(--border);
+            background: var(--card-bg);
+            border-radius: 999px;
+            padding: 6px 13px;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all var(--transition);
+            white-space: nowrap;
+        }
+
+        .toc-links a:hover,
+        .toc-links a:focus-visible {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: var(--accent-soft);
+            outline: none;
+        }
+
+        .toc-links a.active {
+            background: var(--accent);
+            color: #ffffff;
+            border-color: var(--accent);
+            font-weight: 600;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 26px 28px;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 16px;
+            border-left: 4px solid transparent;
+            transition: all var(--transition);
+        }
+
+        .card:hover {
+            border-left-color: var(--accent);
+            box-shadow: var(--shadow-md);
+        }
+
+        .card h2 {
+            margin: 0 0 12px;
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card h2 .section-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .card p {
+            margin: 10px 0;
+            color: var(--text);
+        }
+
+        .card ul,
+        .card ol {
+            margin: 10px 0 0 8px;
+            padding: 0;
+            list-style: none;
+        }
+
+        .card li {
+            margin: 9px 0;
+            padding-left: 22px;
+            position: relative;
+            color: var(--text);
+        }
+
+        .card li::before {
+            content: '';
+            position: absolute;
+            left: 2px;
+            top: 9px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+            opacity: 0.7;
+        }
+
+        .card a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color var(--transition);
+            word-break: break-all;
+        }
+
+        .card a:hover {
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .contact-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .copy-btn {
+            background: var(--accent-soft);
+            border: 1px solid var(--accent-border);
+            color: var(--accent);
+            padding: 7px 13px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 13px;
+            font-family: var(--font-sans);
+            transition: all var(--transition);
+            white-space: nowrap;
+        }
+
+        .copy-btn:hover {
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
+        }
+
+        .copy-btn.copied {
+            background: #16a34a;
+            border-color: #16a34a;
+            color: #fff;
+        }
+
+        .footer {
+            margin-top: 28px;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 13.5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .footer a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .btt-float {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            z-index: 50;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 24px rgba(220, 38, 69, 0.28);
+            opacity: 0;
+            transform: translateY(16px);
+            pointer-events: none;
+            transition: all 260ms ease-out;
+        }
+
+        .btt-float.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .btt-float:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 32px rgba(220, 38, 69, 0.36);
+        }
+
+        .btt-float:active {
+            transform: scale(0.94);
+        }
+
+        :focus-visible {
+            outline: 2.5px solid var(--accent);
+            outline-offset: 3px;
+            border-radius: 6px;
+        }
+
+        @media print {
+            .progress-bar,
+            .toc,
+            .btt-float,
+            .copy-btn,
+            .actions {
+                display: none !important;
+            }
+            body {
+                background: #fff;
+                color: #000;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+            .card {
+                box-shadow: none;
+                border: 1px solid #ddd;
+                border-left: 3px solid #000;
+                break-inside: avoid;
+                margin-bottom: 10px;
+                padding: 16px 18px;
+            }
+            .hero {
+                box-shadow: none;
+                border: 1px solid #ddd;
+                padding: 20px;
+            }
+            .wrap {
+                max-width: 100%;
+                padding: 0;
+            }
+            a {
+                color: #000;
+                text-decoration: underline;
+            }
+        }
+
+        @media (max-width: 720px) {
+            .hero {
+                padding: 24px 18px 20px;
+            }
+            .hero h1 {
+                font-size: 28px;
+            }
+            .card {
+                padding: 20px 16px;
+            }
+            .card h2 {
+                font-size: 19px;
+            }
+            .toc {
+                position: static;
+                backdrop-filter: none;
+                -webkit-backdrop-filter: none;
+                background: var(--card-bg);
+            }
+            .toc-links a {
+                font-size: 12px;
+                padding: 5px 10px;
+            }
+            .btt-float {
+                bottom: 18px;
+                right: 16px;
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .hero h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress-bar" id="progressBar" aria-hidden="true"></div>
+
+    <div class="wrap">
+
+        <!-- Hero -->
+        <header class="hero">
+            <div class="brand-row">
+                <img src="/assets/logo.svg" alt="Masoya logo" class="logo" width="46" height="46" loading="eager" />
+                <a href="/" class="brand-name">Masoya</a>
+            </div>
+            <h1>Child Safety Standards</h1>
+            <p class="subtitle">
+                Our commitment to protecting children and maintaining a safe environment for all users.
+            </p>
+        </header>
+
+        <!-- Sticky TOC -->
+        <nav class="toc" id="tocNav" aria-label="Quick Navigation">
+            <div class="toc-header">
+                <span class="icon">&#9776;</span>
+                <strong>Jump to Section</strong>
+            </div>
+            <div class="toc-links" id="tocLinks">
+                <a href="#commitment">Commitment</a>
+                <a href="#age-restriction">Age Restriction</a>
+                <a href="#prohibited">Prohibited Content</a>
+                <a href="#reporting">In-App Reporting</a>
+                <a href="#enforcement">Enforcement</a>
+                <a href="#authorities">Cooperation</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+
+        <!-- 1. Our Commitment -->
+        <section class="card" id="commitment">
+            <h2><span class="section-icon">🛡️</span> Our Commitment to Child Safety</h2>
+            <p>Masoya is committed to maintaining a safe and respectful environment for all users.</p>
+            <p>Masoya is a dating application intended <strong>strictly for adults aged 18 years and older</strong>. Individuals under the age of 18 are not permitted to create an account or use the app.</p>
+            <p>We maintain a <strong>zero-tolerance policy</strong> toward child sexual abuse and exploitation (CSAE), including child sexual abuse material (CSAM), grooming, solicitation, or any content that exploits minors.</p>
+        </section>
+
+        <!-- 2. Age Restriction -->
+        <section class="card" id="age-restriction">
+            <h2><span class="section-icon">🔞</span> Age Restriction</h2>
+            <p>Users must be at least 18 years old to use Masoya.</p>
+            <p>Any account suspected of belonging to a minor will be investigated and permanently removed.</p>
+            <p>We may request additional verification if necessary.</p>
+        </section>
+
+        <!-- 3. Prohibited Content and Behavior -->
+        <section class="card" id="prohibited">
+            <h2><span class="section-icon">🚫</span> Prohibited Content and Behavior</h2>
+            <p>The following are strictly prohibited on Masoya:</p>
+            <ul>
+                <li>Child sexual abuse material (CSAM)</li>
+                <li>Sexualized images of minors</li>
+                <li>Grooming or exploitation of minors</li>
+                <li>Soliciting minors for sexual purposes</li>
+                <li>Any attempt to share, request, or promote exploitative content involving children</li>
+            </ul>
+            <p>Accounts engaged in these activities will be <strong>permanently banned</strong> and may be reported to appropriate authorities.</p>
+        </section>
+
+        <!-- 4. In-App Reporting -->
+        <section class="card" id="reporting">
+            <h2><span class="section-icon">🕵️</span> In-App Reporting</h2>
+            <p>Masoya provides tools that allow users to report:</p>
+            <ul>
+                <li>User profiles</li>
+                <li>Messages</li>
+                <li>Photos</li>
+                <li>Any suspicious or abusive behavior</li>
+            </ul>
+            <p>Reports are reviewed promptly by our moderation team.</p>
+        </section>
+
+        <!-- 5. Enforcement Actions -->
+        <section class="card" id="enforcement">
+            <h2><span class="section-icon">⚖️</span> Enforcement Actions</h2>
+            <p>When a violation is confirmed, we may take one or more of the following actions:</p>
+            <ul>
+                <li>Remove offending content</li>
+                <li>Suspend or permanently ban accounts</li>
+                <li>Preserve relevant evidence</li>
+                <li>Report the matter to law enforcement or child protection organizations, where required by law</li>
+            </ul>
+        </section>
+
+        <!-- 6. Cooperation With Authorities -->
+        <section class="card" id="authorities">
+            <h2><span class="section-icon">🤝</span> Cooperation With Authorities</h2>
+            <p>Masoya complies with applicable child safety laws and cooperates with law enforcement and regulatory authorities in connection with investigations involving child exploitation.</p>
+        </section>
+
+        <!-- 7. Contact Information -->
+        <section class="card" id="contact">
+            <h2><span class="section-icon">📧</span> Contact Information</h2>
+            <p>If you have concerns related to child safety, contact us at:</p>
+            <div class="contact-row">
+                <strong>Email:</strong>
+                <a href="mailto:masoyaapp@gmail.com">masoyaapp@gmail.com</a>
+                <button class="copy-btn" id="copyEmailBtn" aria-label="Copy email address to clipboard">Copy</button>
+                <span id="copyFeedback" style="font-size:12px;color:var(--text-secondary);opacity:0;transition:opacity 200ms;">Copied!</span>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="actions">
+                <button class="copy-btn" onclick="scrollToTop()" style="font-size:14px;padding:10px 18px;">
+                    &uarr;&nbsp; Back to Top
+                </button>
+            </div>
+            <p><a href="/">&larr; Back to Masoya Home</a></p>
+            <p>&copy; <span id="year"></span> Masoya. All rights reserved.</p>
+        </div>
+    </div>
+
+    <button class="btt-float" id="bttFloat" aria-label="Scroll back to top" title="Back to top">
+        &uarr;
+    </button>
+
+    <script>
+        (function() {
+            const tocNav = document.getElementById('tocNav');
+            const tocLinksContainer = document.getElementById('tocLinks');
+            const tocLinks = tocLinksContainer.querySelectorAll('a');
+            const bttFloat = document.getElementById('bttFloat');
+            const copyBtn = document.getElementById('copyEmailBtn');
+            const copyFeedback = document.getElementById('copyFeedback');
+            const sections = document.querySelectorAll('section.card[id]');
+            const yearSpan = document.getElementById('year');
+
+            if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+
+            function updateProgress() {
+                const scrollTop = window.scrollY;
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const pct = docHeight > 0 ? Math.min((scrollTop / docHeight) * 100, 100) : 0;
+                document.documentElement.style.setProperty('--progress', pct.toFixed(1) + '%');
+            }
+
+            function updateTocShadow() {
+                const stuck = tocNav.getBoundingClientRect().top <= 18;
+                tocNav.classList.toggle('scrolled', stuck && window.scrollY > 40);
+            }
+
+            function updateActiveLink() {
+                let currentId = '';
+                const offset = 110;
+                sections.forEach((sec) => {
+                    if (sec.getBoundingClientRect().top <= offset) {
+                        currentId = sec.getAttribute('id');
+                    }
+                });
+                tocLinks.forEach((link) => {
+                    const href = link.getAttribute('href');
+                    const id = href ? href.replace('#', '') : '';
+                    link.classList.toggle('active', id === currentId);
+                });
+            }
+
+            function updateBttVisibility() {
+                bttFloat.classList.toggle('visible', window.scrollY > 500);
+            }
+
+            function onScroll() {
+                updateProgress();
+                updateTocShadow();
+                updateActiveLink();
+                updateBttVisibility();
+            }
+
+            window.scrollToTop = function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            };
+
+            bttFloat.addEventListener('click', () => window.scrollToTop());
+
+            if (copyBtn) {
+                let copyTimeout;
+                const flash = () => {
+                    copyBtn.textContent = 'Copied!';
+                    copyBtn.classList.add('copied');
+                    copyFeedback.style.opacity = '1';
+                    clearTimeout(copyTimeout);
+                    copyTimeout = setTimeout(() => {
+                        copyBtn.textContent = 'Copy';
+                        copyBtn.classList.remove('copied');
+                        copyFeedback.style.opacity = '0';
+                    }, 1800);
+                };
+                copyBtn.addEventListener('click', async () => {
+                    try {
+                        await navigator.clipboard.writeText('masoyaapp@gmail.com');
+                        flash();
+                    } catch {
+                        const tempInput = document.createElement('input');
+                        tempInput.value = 'masoyaapp@gmail.com';
+                        document.body.appendChild(tempInput);
+                        tempInput.select();
+                        document.execCommand('copy');
+                        document.body.removeChild(tempInput);
+                        flash();
+                    }
+                });
+            }
+
+            updateProgress();
+            updateTocShadow();
+            updateActiveLink();
+            updateBttVisibility();
+
+            window.addEventListener('scroll', onScroll, { passive: true });
+            window.addEventListener('resize', () => {
+                updateProgress();
+                updateActiveLink();
+            });
+
+            bttFloat.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') bttFloat.blur();
+            });
+        })();
+    </script>
+</body>
+</html>
